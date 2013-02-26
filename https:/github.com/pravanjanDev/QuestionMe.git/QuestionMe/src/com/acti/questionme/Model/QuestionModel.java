@@ -7,7 +7,6 @@ import javax.jdo.PersistenceManager;
 
 import org.apache.log4j.Logger;
 
-import com.acti.questionme.Helper.QuestionHelper;
 import com.acti.questionme.Jdo.ContactJDO;
 import com.acti.questionme.Util.PMF;
 

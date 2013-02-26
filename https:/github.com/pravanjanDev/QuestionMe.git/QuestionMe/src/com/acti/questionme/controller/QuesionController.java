@@ -16,7 +16,10 @@ import com.acti.questionme.Helper.QuestionHelper;
 @RequestMapping("/QuestionController")
 public class QuesionController {
 	private static Logger logger = Logger.getLogger(QuesionController.class.getPackage().getName());
+	
+	@RequestMapping("/RegisterNewUser")
 	public String registerNewUser(HttpServletRequest request , HttpServletResponse response){
+		logger.info("call to controller");
 		QuestionHelper questionHelper = new QuestionHelper();
 		String responseString = null ;
 		try{

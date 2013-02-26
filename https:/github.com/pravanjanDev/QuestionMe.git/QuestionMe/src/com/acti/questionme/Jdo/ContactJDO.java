@@ -7,7 +7,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
-
+@SuppressWarnings("serial")
 @PersistenceCapable(detachable = "true")
 public class ContactJDO implements Serializable{
 

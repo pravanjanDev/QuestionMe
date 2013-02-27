@@ -13,7 +13,7 @@ import com.acti.questionme.Util.PersistenceManagerUtil;
 public class QuestionModel {
 	private static Logger logger = Logger.getLogger(QuestionModel.class.getPackage().getName());
 
-	public void registerNewUser(ContactJDO contact) {
+	public ContactJDO registerNewUser(ContactJDO contact) {
 		logger.info("comming inside to create new user");
 		 PersistenceManager	pm = PersistenceManagerUtil.getPersistanceManager();
 
@@ -28,6 +28,7 @@ public class QuestionModel {
 			logger.info("let we check exception type " + sw.toString());
 			
 		}
+		return contact;
 		
 		
 	}

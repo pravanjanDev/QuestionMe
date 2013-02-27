@@ -2,6 +2,7 @@ package com.acti.questionme.Helper;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.HashMap;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +16,10 @@ import com.acti.questionme.controller.QuesionController;
 
 public class QuestionHelper {
 	private static Logger logger = Logger.getLogger(QuestionHelper.class.getPackage().getName());
-	public String registerNewUser(HttpServletRequest request,HttpServletResponse response) {
-		String responseString = null ;
+	public  HashMap<String, Object> registerNewUser(HttpServletRequest request,HttpServletResponse response) {
 		UUID key = UUID.randomUUID();
-		
+		ContactJDO tempContact = null;
+		HashMap<String ,Object> paramMap = new HashMap<String,Object>();
 	    ContactJDO contact = new ContactJDO();
 	    QuestionModel questionModel = new QuestionModel();
 		
@@ -29,7 +30,13 @@ public class QuestionHelper {
 			contact.setFirstName(request.getParameter("firstName"));
 			contact.setLastName(request.getParameter("lastName"));
 			
-			questionModel.registerNewUser(contact);
+			tempContact = questionModel.registerNewUser(contact);
+			paramMap.put("success", "true");
+			paramMap.put("contactId",tempContact.getContactId() );
+			paramMap.put("firstname",tempContact.getFirstName());
+			paramMap.put("email", tempContact.getEmail());
+			paramMap.put("lastname", tempContact.getLastName());
+			
 		}
 		catch(Exception e){
 			StringWriter sw = new StringWriter();
@@ -39,7 +46,7 @@ public class QuestionHelper {
 			
 		}
 		
-		return null;
+		return paramMap;
 	}
 
 }

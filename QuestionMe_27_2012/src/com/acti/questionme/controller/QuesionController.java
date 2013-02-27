@@ -2,6 +2,7 @@ package com.acti.questionme.controller;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.acti.questionme.Helper.QuestionHelper;
+import com.acti.questionme.Jdo.ContactJDO;
 
 @Controller
 @RequestMapping("/QuestionController")
@@ -18,12 +20,12 @@ public class QuesionController {
 	private static Logger logger = Logger.getLogger(QuesionController.class.getPackage().getName());
 	
 	@RequestMapping("/RegisterNewUser")
-	public String registerNewUser(HttpServletRequest request , HttpServletResponse response){
+	public HashMap<String, Object> registerNewUser(HttpServletRequest request , HttpServletResponse response){
 		logger.info("call to controller");
 		QuestionHelper questionHelper = new QuestionHelper();
-		String responseString = null ;
+		HashMap<String, Object> paramMap = new HashMap<String,Object>();
 		try{
-			responseString = questionHelper.registerNewUser(request,response);
+			paramMap = questionHelper.registerNewUser(request,response);
 		}
 		catch(Exception e){
 			StringWriter sw = new StringWriter();
@@ -33,7 +35,7 @@ public class QuesionController {
 		}
 		
 		
-		return responseString;
+		return paramMap;
 		
 		
 	}
